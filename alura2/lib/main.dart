@@ -1,3 +1,4 @@
+import 'package:alura2/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,114 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Fluter: Tarefa'),
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
         ),
-        body: ListView(
-          children: [
-            Task('Meditação Matinal'),
-            Task('Estudar'),
-            Task('Trabalhar'),
-            Task('Trabalhar'),
-            Task('Trabalhar'),
-            Task('Trabalhar'),
-            Task('Trabalhar'),
-            Task('Trabalhar'),
-            Task('Trabalhar'),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
-      ),
-    );
-  }
-}
-
-class Task extends StatefulWidget {
-  Task(this.nome, {Key? key}) : super(key: key);
-
-  final nome;
-
-  @override
-  State<Task> createState() => _TaskState();
-}
-
-class _TaskState extends State<Task> {
-  int nivel = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        child: Stack(children: [
-          Container(
-            color: Colors.blue,
-            height: 140,
-          ),
-          Column(
-            children: [
-              Container(
-                color: Colors.white,
-                height: 100,
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        color: Colors.black26,
-                        width: 72,
-                        height: 100,
-                      ),
-                      Container(
-                        width: 200,
-                        child: Text(
-                          widget.nome,
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                          },
-                          child: Icon(Icons.arrow_drop_up))
-                    ]),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                          width: 200,
-                          child: LinearProgressIndicator(
-                            color: Colors.white,
-                            value: nivel / 10,
-                          )),
-                    ),
-                    Text(
-                      'Nível: $nivel',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ]),
-      ),
-    );
+        home: const FormScreen());
   }
 }
